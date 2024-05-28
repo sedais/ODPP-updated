@@ -5,8 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import warnings
 from wordcloud import WordCloud
-
-
+import json
 
 # Ignore all warnings
 warnings.filterwarnings("ignore")
@@ -55,6 +54,11 @@ def load_youtube_data():
     if '_id' in df.columns:
         df['_id'] = df['_id'].astype(str)
     return df
+
+
+def load_json(file):
+    data = pd.read_json(file)
+    return data
 
 
 # Function to display data
@@ -250,7 +254,8 @@ def show_sentiment_analysis(data):
 
     if show_textblob:
         st.subheader('Top 5 Videos by TextBlob Polarity Score')
-        top_textblob_videos = sentiment_df.nlargest(5, 'textblob_polarity')[['phone_name', 'video_id', 'textblob_polarity']]
+        top_textblob_videos = sentiment_df.nlargest(5, 'textblob_polarity')[
+            ['phone_name', 'video_id', 'textblob_polarity']]
         st.dataframe(top_textblob_videos)
 
     if show_roberta:
@@ -273,7 +278,8 @@ def show_sentiment_analysis(data):
 
     if show_textblob:
         st.subheader('Top 5 Videos by TextBlob Polarity Score')
-        top_textblob_videos = sentiment_df.nsmallest(5, 'textblob_polarity')[['phone_name', 'video_id', 'textblob_polarity']]
+        top_textblob_videos = sentiment_df.nsmallest(5, 'textblob_polarity')[
+            ['phone_name', 'video_id', 'textblob_polarity']]
         st.dataframe(top_textblob_videos)
 
     if show_roberta:
@@ -320,7 +326,8 @@ def show_sentiment_analysis(data):
 
     ###########################
     # Calculate the average sentiment scores per phone
-    avg_sentiment_by_phone = sentiment_df.groupby('phone_name')[['vader_compound', 'textblob_polarity']].mean().reset_index()
+    avg_sentiment_by_phone = sentiment_df.groupby('phone_name')[
+        ['vader_compound', 'textblob_polarity']].mean().reset_index()
 
     # Find the top 5 phones with the highest average sentiment scores
     top_5_positive_phones = avg_sentiment_by_phone.nlargest(5, 'vader_compound')
@@ -376,6 +383,7 @@ def show_sentiment_analysis(data):
     ax.set_xlabel('Average TextBlob Polarity Score')
     ax.set_ylabel('Phone Name')
     st.pyplot(fig)
+
 
 # Function to show transcript summaries and key sentiments
 def show_analysis_by_phone(data):
@@ -459,8 +467,11 @@ def main():
     # Create tabs
     tab1, tab2, tab3 = st.tabs(
         ["Exploratory Analysis", "YouTube Sentiment Analysis", "Summary and Sentiment Analysis by Phone"])
-    ifixit_data = load_ifixit_data()
-    youtube_data = load_youtube_data()
+    # ifixit_data = load_ifixit_data()
+    # youtube_data = load_youtube_data()
+
+    ifixit_data = load_json("odpp.phones.json")
+    youtube_data = load_json("odpp.youtube.json")
 
     # Exploratory Analysis Tab
     with tab1:

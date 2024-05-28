@@ -5,8 +5,8 @@ from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
 # from youtube_transcript_api._errors import TranscriptsDisabled
 from pymongo import MongoClient
 
-# API_KEY = 'AIzaSyCbz3QLXtcftCKtFYnxpeOS6sYbZaUHw0Y'
-API_KEY = 'AIzaSyCRE9OKsBciy62wJC3esxvl4PP6KX7vr8A'
+# API_KEY = "<API_KEY>"
+API_KEY = "<API_KEY>"
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
