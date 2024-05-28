@@ -243,9 +243,9 @@ def show_sentiment_analysis(data):
     st.write('### Videos with Highest Positive Sentiment')
 
     # Checkbox to select which analysis to show
-    show_vader = st.checkbox('Show Top 5 VADER Videos')
-    show_textblob = st.checkbox('Show Top TextBlob Phones')
-    show_roberta = st.checkbox('Show Top RoBERTa Phones')
+    show_vader = st.checkbox('Show Top VADER Videos')
+    show_textblob = st.checkbox('Show Top TextBlob Videos')
+    show_roberta = st.checkbox('Show Top RoBERTa Videos')
 
     if show_vader:
         st.subheader('Top 5 Videos by VADER Compound Score')
@@ -260,31 +260,31 @@ def show_sentiment_analysis(data):
 
     if show_roberta:
         st.subheader('Top 5 Videos by RoBERTa Score')
-        top_roberta_videos = sentiment_df.nlargest(5, 'roberta_score')[['phone_name', 'video_id', 'roberta_score']]
+        top_roberta_videos = sentiment_df.nlargest(5, 'roberta_score')[['phone_name', 'video_id', 'roberta_label', 'roberta_score']]
         st.dataframe(top_roberta_videos)
 
     # Top Videos with Lowest Positive Sentiments
-    st.write('### Videos with Lowest Positive Sentiment')
+    st.write('### Videos with Highest Negative Sentiment')
 
     # Checkbox to select which analysis to show
-    show_vader = st.checkbox('Show Last VADER Phones')
-    show_textblob = st.checkbox('Show Last TextBlob Phones')
-    show_roberta = st.checkbox('Show Last RoBERTa Phones')
+    show_vader = st.checkbox('Show Last VADER Videos')
+    show_textblob = st.checkbox('Show Last TextBlob Videos')
+    show_roberta = st.checkbox('Show Last RoBERTa Videos')
 
     if show_vader:
-        st.subheader('Top 5 Videos by VADER Compound Score')
+        st.subheader('Lowest 5 Videos by VADER Compound Score')
         top_vader_videos = sentiment_df.nsmallest(5, 'vader_compound')[['phone_name', 'video_id', 'vader_compound']]
         st.dataframe(top_vader_videos)
 
     if show_textblob:
-        st.subheader('Top 5 Videos by TextBlob Polarity Score')
+        st.subheader('Lowest 5 Videos by TextBlob Polarity Score')
         top_textblob_videos = sentiment_df.nsmallest(5, 'textblob_polarity')[
             ['phone_name', 'video_id', 'textblob_polarity']]
         st.dataframe(top_textblob_videos)
 
     if show_roberta:
         st.subheader('Top 5 Videos by RoBERTa Score')
-        top_roberta_videos = sentiment_df.nsmallest(5, 'roberta_score')[['phone_name', 'video_id', 'roberta_score']]
+        top_roberta_videos = sentiment_df.nsmallest(5, 'roberta_score')[['phone_name', 'video_id', 'roberta_label', 'roberta_score']]
         st.dataframe(top_roberta_videos)
 
     # st.write("### VADER Sentiment Distribution")
