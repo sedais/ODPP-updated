@@ -31,7 +31,7 @@ API used is Youtube data api v3: https://developers.google.com/youtube/v3
 ### Quota and Pricing for YouTube Data API
 **Free Quota**: Each project is allocated 10,000 units of quota per day for free. This should be sufficient for the scale of this project.
 
-Below is an example function to query YouTube using the Google API from **social-media/youtube_api_search.py**: (adjusted)
+Below is an example function to query YouTube using the Google API from **social-media-analysis/youtube_api_search.py**: (adjusted)
 
 
 ```python
