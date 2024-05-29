@@ -42,11 +42,11 @@ Below is an example function to query YouTube using the Google API from **social
 ```
 
 ### Data Interaction and Display Explanation
-1. Writing Data to MongoDB:
+1. **Writing Data to MongoDB:**
 
 The app collects and processes data, such as phone details and YouTube video queries. This data is then stored in collections within a local MongoDB database.
 
-2. Extracting Collections for Streamlit:
+2. **Extracting Collections for Streamlit:**
 
 To display the results in the Streamlit app, the necessary collections are extracted from the MongoDB database in JSON format.
 
@@ -54,7 +54,7 @@ The extracted data in the JSON format is then used within the Streamlit applicat
 
 (This approach ensures the collections are accessed safely without relying on MongoDB Cloud Atlas, where clusters can become inactive after periods of inactivity, which was the case from the initial development)
 
-3. Writing Data to JSON for Easier Use:
+3. **Writing Data to JSON for Easier Use:**
 
 To make it easier to use and share the data, the app can also adjusted to write the data directly to JSON files. (This can be done by the contributors of the main project)
 
