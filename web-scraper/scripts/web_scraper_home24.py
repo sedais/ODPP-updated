@@ -8,7 +8,7 @@ base_url = 'https://www.home24.at/'
 response = requests.get(url)
 
 # Create or open a CSV file for writing
-with open('home24_base.csv', mode='w', newline='', encoding='utf-8') as file:
+with open('../data/home24_base.csv', mode='w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     # Write the header row
     writer.writerow(['Product Name', 'Product Price', 'Product URL', 'Material'])
