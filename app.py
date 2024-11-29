@@ -470,8 +470,8 @@ def main():
     # ifixit_data = load_ifixit_data()
     # youtube_data = load_youtube_data()
 
-    ifixit_data = load_json("odpp.phones.json")
-    youtube_data = load_json("odpp.youtube.json")
+    ifixit_data = load_json("data/odpp.phones.json")
+    youtube_data = load_json("data/odpp.youtube.json")
 
     # Exploratory Analysis Tab
     with tab1:
